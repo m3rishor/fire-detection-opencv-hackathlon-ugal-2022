@@ -19,10 +19,9 @@ while(True):
         aria = math.sqrt(math.pow((x+w+20)-(x-20),2)+math.pow((y+h+20)-(y-20),2))
         if (aria > 150):
             cv2.putText(Fire,'FOC MARE',(40,70),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255),3)
-            playsound('audio.mp3', block=False)
+            playsound('audio2.mp3', block=False)
         else: 
             cv2.putText(Fire,'FOC MIC',(40,70),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255),3)
-            playsound('audio2.mp3', block=False)
 
 
 
@@ -34,9 +33,10 @@ while(True):
             cv2.imwrite('opencv'+str(i)+'.png', Fire)
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = Fire[y:y+h, x:x+w]
-        print(aria)
-    
-        
+        print(firelen)
+        crop = Fire[y:y+h, x:x+w]
+        cv2.imshow('zoom',crop)
+
     cv2.imshow('Fire', Fire)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
